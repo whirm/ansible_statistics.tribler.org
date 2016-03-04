@@ -1,2 +1,18 @@
 ---
 # tasks file for whirm.statistics.tribler.org
+
+
+- name: Create collector user
+  action: user
+      name=collector
+      comment="This is the user that will be connecting to the tracker hosts to collect the logs"
+      generate_ssh_key=yes
+      home={{ dispersy_collector_home_dir }}
+      shell=/bin/false
+      state=present
+
+- name: "Fetch the collector's public key"
+  action: fetch
+      src=~collector/.ssh/id_rsa.pub
+      dest=ssh_keys/fetched/dispersy_collector.pub
+      fail_on_missing=yes

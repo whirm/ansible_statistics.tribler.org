@@ -1,2 +1,4 @@
 ---
 # defaults file for whirm.statistics.tribler.org
+
+dispersy_collector_home_dir: /var/lib/collected_dispersy_logs
